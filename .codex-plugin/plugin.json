@@ -1,0 +1,25 @@
+{
+  "name": "semver-plugin",
+  "version": "0.1.0",
+  "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
+  "author": {
+    "name": "Local developer"
+  },
+  "license": "MIT",
+  "keywords": ["semver", "versioning", "releases", "compatibility"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SemVer Rules",
+    "shortDescription": "Choose and review semantic versions",
+    "longDescription": "Apply the official Semantic Versioning 2.0.0 specification when choosing, validating, comparing, and reviewing release versions.",
+    "developerName": "Local developer",
+    "category": "Developer Tools",
+    "capabilities": ["Instructions", "Lifecycle hooks"],
+    "websiteURL": "https://semver.org/",
+    "defaultPrompt": [
+      "Choose the next version for these changes.",
+      "Review this diff for SemVer compliance.",
+      "Validate and order these semantic versions."
+    ]
+  }
+}
