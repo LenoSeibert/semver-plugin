@@ -1,0 +1,84 @@
+name: Promote dev to main
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+    inputs:
+      merge_method:
+        description: Merge method to use when auto-merge is enabled.
+        required: true
+        default: merge
+        type: choice
+        options:
+          - merge
+          - squash
+          - rebase
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dev-to-main
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    name: Open PR and enable auto-merge
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - name: Validate version
+        run: node scripts/check-version.js
+
+      - name: Check promotion diff
+        id: promotion
+        run: |
+          set -euo pipefail
+
+          git fetch origin main dev
+
+          if git diff --quiet origin/main...origin/dev; then
+            echo "dev is already in sync with main."
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create or update promotion PR
+        if: steps.promotion.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          pr_number="$(gh pr list --base main --head dev --state open --json number --jq '.[0].number // empty')"
+
+          if [ -z "$pr_number" ]; then
+            gh pr create \
+              --base main \
+              --head dev \
+              --title "Promote dev to main" \
+              --body "Automated promotion from dev to main after version validation."
+            pr_number="$(gh pr list --base main --head dev --state open --json number --jq '.[0].number')"
+          fi
+
+          echo "pr_number=$pr_number" >> "$GITHUB_ENV"
+
+      - name: Enable auto-merge
+        if: steps.promotion.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MERGE_METHOD: ${{ github.event.inputs.merge_method || 'merge' }}
+        run: |
+          set -euo pipefail
+
+          gh pr merge "$pr_number" --auto "--$MERGE_METHOD"
