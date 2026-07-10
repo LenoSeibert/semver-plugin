@@ -7,6 +7,18 @@
 
 [English](../README.md) · [中文（简体）](README.zh-CN.md) · [Español](README.es.md) · [Português (Brasil)](README.pt-BR.md)
 
+## उपयोग का मामला और हल की जाने वाली समस्या
+
+इस plugin का उपयोग तब करें जब किसी agent को तय करना हो कि परिवर्तनों के समूह से
+`major`, `minor`, `patch` या कोई release नहीं बननी चाहिए, खासकर release planning,
+pull request review, changelog तैयारी या version audit के दौरान।
+
+यह release से जुड़ी एक आम समस्या हल करता है: version bump अक्सर commit labels,
+अनुमान या diff के आकार के आधार पर चुन लिया जाता है। SemVer इसके बजाय घोषित
+public API और compatibility impact पर निर्भर करता है। यह plugin agent के सामने
+यही नियम बनाए रखता है, वास्तविक परिवर्तनों की जाँच में मदद करता है और release
+recommendation को समझाना आसान बनाता है।
+
 ## सुविधाएँ
 
 - `semver`: अगला संस्करण चुनता है और संस्करण की संरचना तथा प्राथमिकता जाँचता है।

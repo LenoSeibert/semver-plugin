@@ -7,6 +7,15 @@
 
 [English](../README.md) · [Español](README.es.md) · [हिन्दी](README.hi.md) · [Português (Brasil)](README.pt-BR.md)
 
+## 使用场景和解决的问题
+
+当代理需要判断一组变更应该发布为 `major`、`minor`、`patch`，还是不发布新版本时，
+可以使用这个插件。它特别适合发布规划、pull request 审查、changelog 准备和版本审计。
+
+它解决的是常见的发布判断问题：版本升级经常根据 commit 标签、直觉或 diff 大小来决定。
+但 SemVer 关注的是已声明的公共 API 以及兼容性影响。这个插件会让代理始终围绕这条规则
+判断，帮助检查真实变更，并让发布建议更容易解释。
+
 ## 功能
 
 - `semver`：选择下一个版本，并验证版本语法和优先级。

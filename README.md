@@ -6,6 +6,18 @@ Portable plugin for coding agents that applies the official
 [Semantic Versioning 2.0.0](https://semver.org/) specification when planning
 and reviewing releases.
 
+## Use case and problem solved
+
+Use this plugin when an agent needs to decide whether a set of changes should
+produce a `major`, `minor`, `patch`, or no release, especially during release
+planning, pull request review, changelog preparation, or version audits.
+
+It solves a common release problem: version bumps are often chosen from commit
+labels, gut feeling, or the size of a diff. SemVer instead depends on the
+declared public API and compatibility impact. The plugin keeps that rule in
+front of the agent, helps inspect the actual changes, and makes the release
+recommendation easier to justify.
+
 ## Languages
 
 English is the canonical README. Translations are provided in five of the

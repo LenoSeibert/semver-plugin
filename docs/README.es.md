@@ -8,6 +8,19 @@ versiones.
 
 [English](../README.md) · [中文（简体）](README.zh-CN.md) · [हिन्दी](README.hi.md) · [Português (Brasil)](README.pt-BR.md)
 
+## Caso de uso y problema que resuelve
+
+Use este plugin cuando un agente necesite decidir si un conjunto de cambios debe
+generar una versión `major`, `minor`, `patch` o ninguna publicación,
+especialmente durante la planificación de versiones, la revisión de pull
+requests, la preparación del changelog o las auditorías de versiones.
+
+Resuelve un problema común de publicación: el incremento de versión suele
+elegirse por etiquetas de commits, intuición o tamaño del diff. SemVer depende
+de la API pública declarada y del impacto en la compatibilidad. El plugin
+mantiene esa regla presente para el agente, ayuda a inspeccionar los cambios
+reales y facilita justificar la recomendación de publicación.
+
 ## Funciones
 
 - `semver`: elige la siguiente versión y valida la sintaxis y la precedencia.

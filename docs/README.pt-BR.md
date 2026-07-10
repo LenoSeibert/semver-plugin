@@ -7,6 +7,19 @@ Plugin portátil para agentes de código que aplica a especificação oficial
 
 [English](../README.md) · [中文（简体）](README.zh-CN.md) · [Español](README.es.md) · [हिन्दी](README.hi.md)
 
+## Caso de uso e problema resolvido
+
+Use este plugin quando um agente precisar decidir se um conjunto de mudanças
+deve gerar uma release `major`, `minor`, `patch` ou nenhuma release,
+especialmente em planejamento de release, revisão de pull request, preparação
+de changelog ou auditoria de versões.
+
+Ele resolve um problema comum de release: o incremento de versão muitas vezes é
+escolhido por rótulos de commit, intuição ou tamanho do diff. SemVer depende da
+API pública declarada e do impacto de compatibilidade. O plugin mantém essa
+regra em foco para o agente, ajuda a inspecionar as mudanças reais e torna a
+recomendação de release mais fácil de justificar.
+
 ## Recursos
 
 - `semver`: escolhe a próxima versão e valida sintaxe e precedência.
