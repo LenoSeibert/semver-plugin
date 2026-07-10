@@ -5,16 +5,6 @@ on:
     branches:
       - dev
   workflow_dispatch:
-    inputs:
-      merge_method:
-        description: Merge method to use when auto-merge is enabled.
-        required: true
-        default: merge
-        type: choice
-        options:
-          - merge
-          - squash
-          - rebase
 
 permissions:
   contents: write
@@ -26,7 +16,7 @@ concurrency:
 
 jobs:
   promote:
-    name: Open PR and enable auto-merge
+    name: Open promotion PR
     runs-on: ubuntu-latest
 
     steps:
@@ -72,13 +62,3 @@ jobs:
           fi
 
           echo "pr_number=$pr_number" >> "$GITHUB_ENV"
-
-      - name: Enable auto-merge
-        if: steps.promotion.outputs.has_changes == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          MERGE_METHOD: ${{ github.event.inputs.merge_method || 'merge' }}
-        run: |
-          set -euo pipefail
-
-          gh pr merge "$pr_number" --auto "--$MERGE_METHOD"
