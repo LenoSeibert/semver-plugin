@@ -1,0 +1,11 @@
+{
+  "name": "semver-plugin",
+  "version": "0.2.0",
+  "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
+  "author": {
+    "name": "Local developer"
+  },
+  "license": "MIT",
+  "skills": "skills/",
+  "hooks": "hooks/copilot-hooks.json"
+}

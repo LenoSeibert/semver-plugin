@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/hooks/semver-context.js\" sessionStart",
+        "powershell": "node \"${PLUGIN_ROOT}\\hooks\\semver-context.js\" sessionStart",
+        "timeoutSec": 5
+      }
+    ],
+    "subagentStart": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/hooks/semver-context.js\" subagentStart",
+        "powershell": "node \"${PLUGIN_ROOT}\\hooks\\semver-context.js\" subagentStart",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}
