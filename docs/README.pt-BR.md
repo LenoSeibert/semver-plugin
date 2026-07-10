@@ -1,5 +1,7 @@
 # Regras SemVer
 
+![Ilustração abstrata de três marcos de versão conectados](../assets/semver-rules-hero.png)
+
 Plugin portátil para agentes de código que aplica a especificação oficial
 [Semantic Versioning 2.0.0](https://semver.org/) ao planejar e revisar releases.
 

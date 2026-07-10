@@ -1,5 +1,7 @@
 # SemVer Rules
 
+![Abstract illustration of three connected version milestones](assets/semver-rules-hero.png)
+
 Portable plugin for coding agents that applies the official
 [Semantic Versioning 2.0.0](https://semver.org/) specification when planning
 and reviewing releases.

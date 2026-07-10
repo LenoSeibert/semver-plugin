@@ -1,5 +1,7 @@
 # Reglas SemVer
 
+![Ilustración abstracta de tres hitos de versión conectados](../assets/semver-rules-hero.png)
+
 Plugin portátil para agentes de programación que aplica la especificación
 oficial [Semantic Versioning 2.0.0](https://semver.org/) al planificar y revisar
 versiones.

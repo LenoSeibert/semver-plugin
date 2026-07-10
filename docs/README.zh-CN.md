@@ -1,5 +1,7 @@
 # SemVer 规则
 
+![三个相连版本里程碑的抽象插图](../assets/semver-rules-hero.png)
+
 这是一个适用于编程代理的便携式插件；它在规划和审查发布时应用官方的
 [Semantic Versioning 2.0.0](https://semver.org/) 规范。
 
