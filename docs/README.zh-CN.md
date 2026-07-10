@@ -74,6 +74,16 @@ claude plugin marketplace add LenoSeibert/semver-plugin
 claude plugin install semver-plugin@semver-plugin
 ```
 
+默认情况下插件安装在用户级别。使用 `--scope` 选择其生效范围：
+
+```sh
+claude plugin install semver-plugin@semver-plugin --scope user     # 你的所有项目（默认）
+claude plugin install semver-plugin@semver-plugin --scope project  # 通过 .claude/settings.json 共享
+claude plugin install semver-plugin@semver-plugin --scope local    # 仅此机器（.claude/settings.local.json）
+```
+
+交互式 `/plugin` 菜单也允许在安装时选择范围。
+
 运行 `/reload-plugins`，或开始新会话。
 
 ### Gemini CLI

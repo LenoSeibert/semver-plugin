@@ -78,6 +78,17 @@ claude plugin marketplace add LenoSeibert/semver-plugin
 claude plugin install semver-plugin@semver-plugin
 ```
 
+Por padrão o plugin é instalado no nível do usuário. Para escolher onde ele
+se aplica, use `--scope`:
+
+```sh
+claude plugin install semver-plugin@semver-plugin --scope user     # todos os seus projetos (padrão)
+claude plugin install semver-plugin@semver-plugin --scope project  # compartilhado via .claude/settings.json
+claude plugin install semver-plugin@semver-plugin --scope local    # apenas esta máquina (.claude/settings.local.json)
+```
+
+O menu interativo `/plugin` também permite escolher o escopo na instalação.
+
 Execute `/reload-plugins` ou abra uma nova sessão.
 
 ### Gemini CLI
