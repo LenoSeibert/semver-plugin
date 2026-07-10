@@ -3,8 +3,11 @@
   "version": "0.2.0",
   "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
   "author": {
-    "name": "Local developer"
+    "name": "Leno Seibert",
+    "url": "https://github.com/LenoSeibert"
   },
+  "homepage": "https://github.com/LenoSeibert/semver-plugin",
+  "repository": "https://github.com/LenoSeibert/semver-plugin",
   "license": "MIT",
   "keywords": ["semver", "versioning", "releases", "compatibility"],
   "skills": "./skills/",
@@ -12,10 +15,10 @@
     "displayName": "SemVer Rules",
     "shortDescription": "Choose and review semantic versions",
     "longDescription": "Apply the official Semantic Versioning 2.0.0 specification when choosing, validating, comparing, and reviewing release versions.",
-    "developerName": "Local developer",
+    "developerName": "Leno Seibert",
     "category": "Developer Tools",
     "capabilities": ["Instructions", "Lifecycle hooks"],
-    "websiteURL": "https://semver.org/",
+    "websiteURL": "https://github.com/LenoSeibert/semver-plugin",
     "defaultPrompt": [
       "Choose the next version for these changes.",
       "Review this diff for SemVer compliance.",

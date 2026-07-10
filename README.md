@@ -1,47 +1,104 @@
 # SemVer Rules
 
-Plugin portátil para agentes de código que aplica a especificação oficial
-[Semantic Versioning 2.0.0](https://semver.org/) ao planejar e revisar releases.
+![Abstract illustration of three connected version milestones](assets/semver-rules-hero.png)
 
-## Recursos
+Portable plugin for coding agents that applies the official
+[Semantic Versioning 2.0.0](https://semver.org/) specification when planning
+and reviewing releases.
 
-- `semver`: escolhe o próximo número de versão e valida versões/predecência.
-- `semver-review`: revisa mudanças e recomenda `major`, `minor`, `patch` ou
-  nenhuma release.
-- hooks de início de sessão e subagente: carregam um lembrete curto das regras
-  sem exigir dependências externas além do Node.js usado pelo host.
+## Languages
 
-## Harnesses suportados
+English is the canonical README. Translations are provided in five of the
+world's most widely spoken first languages:
 
-| Harness | Integração |
+- [English](README.md)
+- [中文（简体）](docs/README.zh-CN.md)
+- [Español](docs/README.es.md)
+- [हिन्दी](docs/README.hi.md)
+- [Português (Brasil)](docs/README.pt-BR.md)
+
+## Features
+
+- `semver`: chooses the next version and validates version syntax and
+  precedence.
+- `semver-review`: reviews changes and recommends `major`, `minor`, `patch`,
+  or no release.
+- Session- and subagent-start hooks load a concise rules reminder without
+  external dependencies beyond the host's Node.js runtime.
+
+## Supported harnesses
+
+| Harness | Integration |
 | --- | --- |
-| Codex | manifesto, skills e hooks |
-| Claude Code | manifesto, skills e hooks |
-| Gemini CLI | extensão, contexto, skills e hook de sessão |
-| GitHub Copilot CLI | plugin, skills e hooks |
-| OpenCode e Cursor | instruções portáteis via `AGENTS.md` |
+| Codex | manifest, skills, and hooks |
+| Claude Code | manifest, skills, and hooks |
+| Gemini CLI | extension, context, skills, and session hook |
+| GitHub Copilot CLI | plugin, skills, and hooks |
+| OpenCode and Cursor | portable instructions through `AGENTS.md` |
 
-## Uso
+## Installation
 
-Instale o diretório como plugin local, aprove os hooks em `/hooks` e tente:
-
-- “Qual deve ser a próxima versão depois destas mudanças?”
-- “Revise este diff segundo SemVer.”
-- “Ordene estas versões com pre-releases.”
-
-Instalação local por harness:
+### Codex
 
 ```sh
-# Gemini CLI
-gemini extensions link .
-
-# GitHub Copilot CLI, depois de publicar o repositório
-copilot plugin install OWNER/REPO
+codex plugin marketplace add LenoSeibert/semver-plugin
+codex plugin add semver-plugin@semver-plugin
 ```
 
-Codex e Claude Code usam seus manifestos nativos. Para OpenCode ou Cursor,
-copie ou vincule `AGENTS.md` no projeto que deve seguir estas regras; ambos
-descobrem esse arquivo nativamente.
+Open `/hooks`, review and authorize the hooks, then start a new conversation.
 
-O plugin segue SemVer 2.0.0; convenções específicas de npm, Cargo, PEP 440 ou
-outros ecossistemas só se aplicam quando forem explicitamente solicitadas.
+### Claude Code
+
+```sh
+claude plugin marketplace add LenoSeibert/semver-plugin
+claude plugin install semver-plugin@semver-plugin
+```
+
+Run `/reload-plugins` or start a new session.
+
+### Gemini CLI
+
+```sh
+gemini extensions install https://github.com/LenoSeibert/semver-plugin
+```
+
+Restart the Gemini session. To develop from a local clone, run
+`gemini extensions link .`.
+
+### GitHub Copilot CLI
+
+```sh
+copilot plugin install LenoSeibert/semver-plugin
+```
+
+### OpenCode and Cursor
+
+These harnesses discover `AGENTS.md` in the project. Clone the repository and
+copy or link the file without overwriting existing instructions:
+
+```sh
+git clone https://github.com/LenoSeibert/semver-plugin.git
+cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
+```
+
+If the project already has an `AGENTS.md`, incorporate the SemVer section
+manually.
+
+## Usage
+
+After installation, try:
+
+- “What should the next version be after these changes?”
+- “Review this diff according to SemVer.”
+- “Order these versions with pre-releases.”
+
+The plugin follows SemVer 2.0.0. npm, Cargo, PEP 440, or other ecosystem
+conventions apply only when explicitly requested.
+
+## License and attribution
+
+The plugin's original code and documentation are licensed under the
+[MIT License](LICENSE). The Semantic Versioning 2.0.0 rules incorporated or
+adapted here are attributed to Tom Preston-Werner and are available under
+[CC BY 3.0](LICENSES/CC-BY-3.0.txt). See [NOTICE](NOTICE) for the required
+attribution and source link.
