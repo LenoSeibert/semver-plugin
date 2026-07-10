@@ -18,6 +18,7 @@
 - [Supported harnesses](#-supported-harnesses)
 - [Installation](#-installation)
 - [Usage](#-usage)
+- [Project automation](#-project-automation)
 - [License and attribution](#-license-and-attribution)
 
 ---
@@ -85,6 +86,17 @@ claude plugin marketplace add LenoSeibert/semver-plugin
 claude plugin install semver-plugin@semver-plugin
 ```
 
+By default the plugin is installed at the user level. To choose where it
+applies, pass `--scope`:
+
+```sh
+claude plugin install semver-plugin@semver-plugin --scope user     # all your projects (default)
+claude plugin install semver-plugin@semver-plugin --scope project  # shared via .claude/settings.json
+claude plugin install semver-plugin@semver-plugin --scope local    # this machine only (.claude/settings.local.json)
+```
+
+The interactive `/plugin` menu also lets you pick the scope at install time.
+
 Run `/reload-plugins` or start a new session.
 
 ### Gemini CLI
@@ -97,6 +109,9 @@ Restart the Gemini session. To develop from a local clone, run
 `gemini extensions link .`.
 
 ### GitHub Copilot CLI
+
+Marketplace installs are the forward-compatible path. Direct repository installs
+still work today, but Copilot warns that they are deprecated:
 
 ```sh
 copilot plugin install LenoSeibert/semver-plugin
@@ -127,6 +142,23 @@ After installation, try:
 
 > **ℹ️ Note:** The plugin follows SemVer 2.0.0. npm, Cargo, PEP 440, or other
 > ecosystem conventions apply only when explicitly requested.
+
+---
+
+## 🤖 Project automation
+
+This repository keeps the release version in [`VERSION`](VERSION). The same
+version must appear in the Codex, Claude Code, and GitHub Copilot plugin
+manifests. CI runs `node scripts/check-version.js` on pull requests and pushes
+to `main` or `dev`.
+
+When `dev` changes, the promotion workflow validates the version and prints a
+compare link for opening a `dev` to `main` pull request. It does not create or
+merge pull requests automatically.
+
+When `main` changes, the release workflow validates the version, creates the
+GitHub tag `vX.Y.Z`, builds `semver-plugin-X.Y.Z.zip`, and publishes a GitHub
+Release. `VERSION` remains strict SemVer without the leading `v`.
 
 ---
 

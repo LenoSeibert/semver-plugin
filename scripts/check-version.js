@@ -9,6 +9,7 @@ const manifestPaths = [
   ".codex-plugin/plugin.json",
   ".github/plugin/plugin.json",
   ".claude-plugin/plugin.json",
+  "gemini-extension.json",
 ];
 
 const semverPattern =

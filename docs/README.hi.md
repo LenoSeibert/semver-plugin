@@ -18,6 +18,7 @@
 - [समर्थित परिवेश](#-समर्थित-परिवेश)
 - [स्थापना](#-स्थापना)
 - [उपयोग](#-उपयोग)
+- [प्रोजेक्ट ऑटोमेशन](#-प्रोजेक्ट-ऑटोमेशन)
 - [लाइसेंस और श्रेय](#-लाइसेंस-और-श्रेय)
 
 ---
@@ -76,6 +77,16 @@ claude plugin marketplace add LenoSeibert/semver-plugin
 claude plugin install semver-plugin@semver-plugin
 ```
 
+डिफ़ॉल्ट रूप से प्लगइन उपयोगकर्ता स्तर पर इंस्टॉल होता है। यह कहाँ लागू हो, यह चुनने के लिए `--scope` का उपयोग करें:
+
+```sh
+claude plugin install semver-plugin@semver-plugin --scope user     # आपके सभी प्रोजेक्ट (डिफ़ॉल्ट)
+claude plugin install semver-plugin@semver-plugin --scope project  # .claude/settings.json के माध्यम से साझा
+claude plugin install semver-plugin@semver-plugin --scope local    # केवल यह मशीन (.claude/settings.local.json)
+```
+
+इंटरैक्टिव `/plugin` मेनू से भी इंस्टॉल के समय स्कोप चुना जा सकता है।
+
 `/reload-plugins` चलाएँ या नया सत्र शुरू करें।
 
 ### Gemini CLI
@@ -88,6 +99,10 @@ Gemini सत्र पुनः आरंभ करें। स्थानी
 `gemini extensions link .` चलाएँ।
 
 ### GitHub Copilot CLI
+
+marketplace के माध्यम से install करना भविष्य के लिए compatible रास्ता है।
+repository से direct install अभी काम करता है, लेकिन Copilot चेतावनी देता है
+कि यह तरीका deprecated है:
 
 ```sh
 copilot plugin install LenoSeibert/semver-plugin
@@ -118,6 +133,23 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 
 > **ℹ️ ध्यान दें:** प्लगइन SemVer 2.0.0 का पालन करता है। npm, Cargo, PEP 440
 > या अन्य ecosystem के नियम केवल स्पष्ट रूप से अनुरोध किए जाने पर लागू होते हैं।
+
+---
+
+## 🤖 प्रोजेक्ट ऑटोमेशन
+
+यह repository release version को [`VERSION`](../VERSION) में रखती है। वही
+version Codex, Claude Code और GitHub Copilot plugin manifests में भी होना चाहिए।
+CI pull requests और `main` या `dev` पर pushes के दौरान
+`node scripts/check-version.js` चलाता है।
+
+जब `dev` बदलती है, promotion workflow version validate करता है और `dev` से
+`main` तक pull request खोलने के लिए compare link दिखाता है। यह pull requests
+अपने-आप create या merge नहीं करता।
+
+जब `main` बदलती है, release workflow version validate करता है, GitHub tag
+`vX.Y.Z` बनाता है, `semver-plugin-X.Y.Z.zip` generate करता है और GitHub Release
+publish करता है। `VERSION` strict SemVer ही रहता है, शुरुआत में `v` नहीं होता।
 
 ---
 
