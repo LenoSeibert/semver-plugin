@@ -1,4 +1,4 @@
-name: Promote dev to main
+name: Check dev promotion
 
 on:
   push:
@@ -7,8 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: dev-to-main
@@ -16,7 +15,7 @@ concurrency:
 
 jobs:
   promote:
-    name: Open promotion PR
+    name: Validate dev promotion
     runs-on: ubuntu-latest
 
     steps:
@@ -43,22 +42,10 @@ jobs:
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create or update promotion PR
+      - name: Show promotion link
         if: steps.promotion.outputs.has_changes == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
 
-          pr_number="$(gh pr list --base main --head dev --state open --json number --jq '.[0].number // empty')"
-
-          if [ -z "$pr_number" ]; then
-            gh pr create \
-              --base main \
-              --head dev \
-              --title "Promote dev to main" \
-              --body "Automated promotion from dev to main after version validation."
-            pr_number="$(gh pr list --base main --head dev --state open --json number --jq '.[0].number')"
-          fi
-
-          echo "pr_number=$pr_number" >> "$GITHUB_ENV"
+          echo "dev is ready to promote to main."
+          echo "Open the pull request at: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...dev?quick_pull=1"
