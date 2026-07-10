@@ -1,0 +1,33 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "name": "semver-context",
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}/hooks/semver-context.js\" SessionStart",
+            "commandWindows": "node \"$env:CLAUDE_PLUGIN_ROOT\\hooks\\semver-context.js\" SessionStart",
+            "timeout": 5,
+            "statusMessage": "Loading SemVer rules..."
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "name": "semver-context",
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}/hooks/semver-context.js\" SubagentStart",
+            "commandWindows": "node \"$env:CLAUDE_PLUGIN_ROOT\\hooks\\semver-context.js\" SubagentStart",
+            "timeout": 5,
+            "statusMessage": "Loading SemVer rules..."
+          }
+        ]
+      }
+    ]
+  }
+}
