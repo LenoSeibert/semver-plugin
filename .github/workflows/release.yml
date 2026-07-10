@@ -1,0 +1,102 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Create GitHub release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate version
+        run: node scripts/check-version.js
+
+      - name: Read version
+        id: version
+        run: |
+          set -euo pipefail
+
+          version="$(tr -d '[:space:]' < VERSION)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Check existing tag
+        id: existing_tag
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            tag_commit="$(git rev-list -n 1 "$TAG")"
+            head_commit="$(git rev-parse HEAD)"
+
+            if [ "$tag_commit" = "$head_commit" ]; then
+              echo "status=same_commit" >> "$GITHUB_OUTPUT"
+            else
+              echo "Version $TAG has already been released on another commit." >&2
+              echo "Bump VERSION and plugin manifests before releasing again." >&2
+              exit 1
+            fi
+          else
+            echo "status=new" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check existing release
+        if: steps.existing_tag.outputs.status == 'same_commit'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists."
+          else
+            echo "Tag $TAG exists, but the GitHub Release is missing." >&2
+            exit 1
+          fi
+
+      - name: Build release archive
+        if: steps.existing_tag.outputs.status == 'new'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          git archive \
+            --format=zip \
+            --prefix="semver-plugin-$VERSION/" \
+            --output="semver-plugin-$VERSION.zip" \
+            HEAD
+
+      - name: Create release
+        if: steps.existing_tag.outputs.status == 'new'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          gh release create "$TAG" \
+            "semver-plugin-$VERSION.zip" \
+            --target "$GITHUB_SHA" \
+            --title "$TAG" \
+            --generate-notes
