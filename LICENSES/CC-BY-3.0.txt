@@ -1,0 +1,14 @@
+Creative Commons Attribution 3.0 Unported
+
+The Semantic Versioning 2.0.0 specification is made available by its author
+under the Creative Commons Attribution 3.0 Unported license (CC BY 3.0).
+
+Canonical license URI:
+https://creativecommons.org/licenses/by/3.0/
+
+Legal code:
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+This file identifies the license applicable to the Semantic Versioning material
+incorporated or adapted in this repository. The complete, authoritative legal
+code is published at the URI above.
