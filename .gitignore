@@ -1,0 +1,32 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Node dependencies and package-manager caches
+node_modules/
+.npm/
+.pnpm-store/
+yarn-error.log*
+
+# Build and coverage output
+dist/
+build/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
