@@ -18,6 +18,7 @@
 - [Harnesses compatíveis](#-harnesses-compatíveis)
 - [Instalação](#-instalação)
 - [Uso](#-uso)
+- [Automação do projeto](#-automação-do-projeto)
 - [Licença e atribuição](#-licença-e-atribuição)
 
 ---
@@ -90,6 +91,10 @@ Reinicie a sessão do Gemini. Para desenvolver a partir de um clone local, use
 
 ### GitHub Copilot CLI
 
+Instalações via marketplace são o caminho compatível com o futuro. A instalação
+direta pelo repositório ainda funciona hoje, mas o Copilot avisa que ela está
+obsoleta:
+
 ```sh
 copilot plugin install LenoSeibert/semver-plugin
 ```
@@ -119,6 +124,23 @@ Após instalar, tente:
 
 > **ℹ️ Nota:** O plugin segue SemVer 2.0.0. Convenções de npm, Cargo, PEP 440
 > ou de outros ecossistemas só se aplicam quando forem solicitadas explicitamente.
+
+---
+
+## 🤖 Automação do projeto
+
+Este repositório mantém a versão de release em [`VERSION`](../VERSION). A mesma
+versão deve aparecer nos manifests dos plugins para Codex, Claude Code e GitHub
+Copilot. O CI executa `node scripts/check-version.js` em pull requests e pushes
+para `main` ou `dev`.
+
+Quando `dev` muda, o workflow de promoção valida a versão e imprime um link de
+comparação para abrir um pull request de `dev` para `main`. Ele não cria nem faz
+merge de pull requests automaticamente.
+
+Quando `main` muda, o workflow de release valida a versão, cria a tag GitHub
+`vX.Y.Z`, gera `semver-plugin-X.Y.Z.zip` e publica uma GitHub Release. O arquivo
+`VERSION` continua usando SemVer estrito, sem o `v` inicial.
 
 ---
 

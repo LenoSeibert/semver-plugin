@@ -18,6 +18,7 @@
 - [支持的环境](#-支持的环境)
 - [安装](#-安装)
 - [使用](#-使用)
+- [项目自动化](#-项目自动化)
 - [许可证和署名](#-许可证和署名)
 
 ---
@@ -85,6 +86,9 @@ gemini extensions install https://github.com/LenoSeibert/semver-plugin
 
 ### GitHub Copilot CLI
 
+通过 marketplace 安装是面向未来的路径。直接从仓库安装目前仍然可用，
+但 Copilot 会提示这种方式已被弃用：
+
 ```sh
 copilot plugin install LenoSeibert/semver-plugin
 ```
@@ -112,6 +116,21 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 
 > **ℹ️ 注意：** 插件遵循 SemVer 2.0.0。仅在明确请求时才应用 npm、Cargo、PEP 440
 > 或其他生态系统的惯例。
+
+---
+
+## 🤖 项目自动化
+
+此仓库在 [`VERSION`](../VERSION) 中维护发布版本。Codex、Claude Code 和
+GitHub Copilot 的插件清单中必须使用同一个版本。CI 会在 pull request 以及
+推送到 `main` 或 `dev` 时运行 `node scripts/check-version.js`。
+
+当 `dev` 发生变化时，promotion workflow 会验证版本，并输出用于打开
+`dev` 到 `main` pull request 的比较链接。它不会自动创建或合并 pull request。
+
+当 `main` 发生变化时，release workflow 会验证版本，创建 GitHub 标签
+`vX.Y.Z`，生成 `semver-plugin-X.Y.Z.zip`，并发布 GitHub Release。`VERSION`
+文件保持严格 SemVer 格式，不带开头的 `v`。
 
 ---
 
