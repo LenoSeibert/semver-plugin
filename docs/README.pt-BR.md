@@ -1,13 +1,28 @@
 # Regras SemVer
 
+[![License: MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-yellow.svg)](../LICENSE) [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue.svg)](https://semver.org/) [![CC BY 3.0](https://img.shields.io/badge/Regras-CC%20BY%203.0-lightgrey.svg)](../LICENSES/CC-BY-3.0.txt)
+
 ![Ilustração abstrata de três marcos de versão conectados](../assets/semver-rules-hero.png)
 
-Plugin portátil para agentes de código que aplica a especificação oficial
-[Semantic Versioning 2.0.0](https://semver.org/) ao planejar e revisar releases.
+> Plugin portátil para agentes de código que aplica a especificação oficial
+> [Semantic Versioning 2.0.0](https://semver.org/) ao planejar e revisar releases.
 
-[English](../README.md) · [中文（简体）](README.zh-CN.md) · [Español](README.es.md) · [हिन्दी](README.hi.md)
+[🇺🇸 English](../README.md) · [🇨🇳 中文（简体）](README.zh-CN.md) · [🇪🇸 Español](README.es.md) · [🇮🇳 हिन्दी](README.hi.md)
 
-## Caso de uso e problema resolvido
+---
+
+## 📋 Sumário
+
+- [Caso de uso e problema resolvido](#-caso-de-uso-e-problema-resolvido)
+- [Recursos](#-recursos)
+- [Harnesses compatíveis](#-harnesses-compatíveis)
+- [Instalação](#-instalação)
+- [Uso](#-uso)
+- [Licença e atribuição](#-licença-e-atribuição)
+
+---
+
+## 🎯 Caso de uso e problema resolvido
 
 Use este plugin quando um agente precisar decidir se um conjunto de mudanças
 deve gerar uma release `major`, `minor`, `patch` ou nenhuma release,
@@ -20,25 +35,31 @@ API pública declarada e do impacto de compatibilidade. O plugin mantém essa
 regra em foco para o agente, ajuda a inspecionar as mudanças reais e torna a
 recomendação de release mais fácil de justificar.
 
-## Recursos
+---
 
-- `semver`: escolhe a próxima versão e valida sintaxe e precedência.
-- `semver-review`: revisa mudanças e recomenda `major`, `minor`, `patch` ou
-  nenhuma release.
-- Hooks no início de sessão e de subagente carregam um lembrete conciso das
-  regras, sem dependências externas além do Node.js do host.
+## ✨ Recursos
 
-## Harnesses compatíveis
+| Skill | Descrição |
+| --- | --- |
+| `semver` | Escolhe a próxima versão e valida sintaxe e precedência |
+| `semver-review` | Revisa mudanças e recomenda `major`, `minor`, `patch` ou nenhuma release |
+| Hooks | Hooks no início de sessão e de subagente carregam um lembrete conciso das regras, sem dependências externas além do Node.js do host |
+
+---
+
+## 🔌 Harnesses compatíveis
 
 | Harness | Integração |
 | --- | --- |
-| Codex | manifesto, skills e hooks |
-| Claude Code | manifesto, skills e hooks |
-| Gemini CLI | extensão, contexto, skills e hook de sessão |
-| GitHub Copilot CLI | plugin, skills e hooks |
-| OpenCode e Cursor | instruções portáteis por `AGENTS.md` |
+| **Codex** | manifesto, skills e hooks |
+| **Claude Code** | manifesto, skills e hooks |
+| **Gemini CLI** | extensão, contexto, skills e hook de sessão |
+| **GitHub Copilot CLI** | plugin, skills e hooks |
+| **OpenCode / Cursor** | instruções portáteis por `AGENTS.md` |
 
-## Instalação
+---
+
+## 📦 Instalação
 
 ### Codex
 
@@ -83,20 +104,25 @@ git clone https://github.com/LenoSeibert/semver-plugin.git
 cp semver-plugin/AGENTS.md /caminho/do/projeto/AGENTS.md
 ```
 
-Se o projeto já tiver `AGENTS.md`, incorpore manualmente a seção do SemVer.
+> **💡 Dica:** Se o projeto já tiver `AGENTS.md`, incorpore manualmente a seção
+> do SemVer.
 
-## Uso
+---
+
+## 🚀 Uso
 
 Após instalar, tente:
 
-- “Qual deve ser a próxima versão depois destas mudanças?”
-- “Revise este diff segundo SemVer.”
-- “Ordene estas versões com pre-releases.”
+- *"Qual deve ser a próxima versão depois destas mudanças?"*
+- *"Revise este diff segundo SemVer."*
+- *"Ordene estas versões com pre-releases."*
 
-O plugin segue SemVer 2.0.0. Convenções de npm, Cargo, PEP 440 ou de outros
-ecossistemas só se aplicam quando forem solicitadas explicitamente.
+> **ℹ️ Nota:** O plugin segue SemVer 2.0.0. Convenções de npm, Cargo, PEP 440
+> ou de outros ecossistemas só se aplicam quando forem solicitadas explicitamente.
 
-## Licença e atribuição
+---
+
+## 📄 Licença e atribuição
 
 O código e a documentação originais do plugin usam a [Licença MIT](../LICENSE).
 As regras de Semantic Versioning 2.0.0 incorporadas ou adaptadas têm autoria de

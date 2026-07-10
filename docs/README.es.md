@@ -1,14 +1,29 @@
 # Reglas SemVer
 
+[![License: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](../LICENSE) [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue.svg)](https://semver.org/) [![CC BY 3.0](https://img.shields.io/badge/Reglas-CC%20BY%203.0-lightgrey.svg)](../LICENSES/CC-BY-3.0.txt)
+
 ![Ilustración abstracta de tres hitos de versión conectados](../assets/semver-rules-hero.png)
 
-Plugin portátil para agentes de programación que aplica la especificación
-oficial [Semantic Versioning 2.0.0](https://semver.org/) al planificar y revisar
-versiones.
+> Plugin portátil para agentes de programación que aplica la especificación
+> oficial [Semantic Versioning 2.0.0](https://semver.org/) al planificar y revisar
+> versiones.
 
-[English](../README.md) · [中文（简体）](README.zh-CN.md) · [हिन्दी](README.hi.md) · [Português (Brasil)](README.pt-BR.md)
+[🇺🇸 English](../README.md) · [🇨🇳 中文（简体）](README.zh-CN.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇧🇷 Português (Brasil)](README.pt-BR.md)
 
-## Caso de uso y problema que resuelve
+---
+
+## 📋 Tabla de contenidos
+
+- [Caso de uso y problema que resuelve](#-caso-de-uso-y-problema-que-resuelve)
+- [Funciones](#-funciones)
+- [Entornos compatibles](#-entornos-compatibles)
+- [Instalación](#-instalación)
+- [Uso](#-uso)
+- [Licencia y atribución](#-licencia-y-atribución)
+
+---
+
+## 🎯 Caso de uso y problema que resuelve
 
 Use este plugin cuando un agente necesite decidir si un conjunto de cambios debe
 generar una versión `major`, `minor`, `patch` o ninguna publicación,
@@ -21,25 +36,31 @@ de la API pública declarada y del impacto en la compatibilidad. El plugin
 mantiene esa regla presente para el agente, ayuda a inspeccionar los cambios
 reales y facilita justificar la recomendación de publicación.
 
-## Funciones
+---
 
-- `semver`: elige la siguiente versión y valida la sintaxis y la precedencia.
-- `semver-review`: revisa cambios y recomienda `major`, `minor`, `patch` o no
-  publicar una versión.
-- Los hooks de inicio de sesión y subagente cargan un recordatorio breve sin
-  dependencias externas aparte de Node.js del host.
+## ✨ Funciones
 
-## Entornos compatibles
+| Skill | Descripción |
+| --- | --- |
+| `semver` | Elige la siguiente versión y valida la sintaxis y la precedencia |
+| `semver-review` | Revisa cambios y recomienda `major`, `minor`, `patch` o no publicar una versión |
+| Hooks | Los hooks de inicio de sesión y subagente cargan un recordatorio breve sin dependencias externas aparte de Node.js del host |
+
+---
+
+## 🔌 Entornos compatibles
 
 | Entorno | Integración |
 | --- | --- |
-| Codex | manifiesto, skills y hooks |
-| Claude Code | manifiesto, skills y hooks |
-| Gemini CLI | extensión, contexto, skills y hook de sesión |
-| GitHub Copilot CLI | plugin, skills y hooks |
-| OpenCode y Cursor | instrucciones portátiles mediante `AGENTS.md` |
+| **Codex** | manifiesto, skills y hooks |
+| **Claude Code** | manifiesto, skills y hooks |
+| **Gemini CLI** | extensión, contexto, skills y hook de sesión |
+| **GitHub Copilot CLI** | plugin, skills y hooks |
+| **OpenCode / Cursor** | instrucciones portátiles mediante `AGENTS.md` |
 
-## Instalación
+---
+
+## 📦 Instalación
 
 ### Codex
 
@@ -84,20 +105,25 @@ git clone https://github.com/LenoSeibert/semver-plugin.git
 cp semver-plugin/AGENTS.md /ruta/al/proyecto/AGENTS.md
 ```
 
-Si el proyecto ya tiene un `AGENTS.md`, incorpore manualmente la sección SemVer.
+> **💡 Consejo:** Si el proyecto ya tiene un `AGENTS.md`, incorpore manualmente
+> la sección SemVer.
 
-## Uso
+---
+
+## 🚀 Uso
 
 Después de instalarlo, pruebe:
 
-- “¿Cuál debe ser la próxima versión después de estos cambios?”
-- “Revisa este diff según SemVer.”
-- “Ordena estas versiones con versiones preliminares.”
+- *"¿Cuál debe ser la próxima versión después de estos cambios?"*
+- *"Revisa este diff según SemVer."*
+- *"Ordena estas versiones con versiones preliminares."*
 
-El plugin sigue SemVer 2.0.0. Las convenciones de npm, Cargo, PEP 440 u otros
-ecosistemas solo se aplican cuando se solicitan explícitamente.
+> **ℹ️ Nota:** El plugin sigue SemVer 2.0.0. Las convenciones de npm, Cargo,
+> PEP 440 u otros ecosistemas solo se aplican cuando se solicitan explícitamente.
 
-## Licencia y atribución
+---
+
+## 📄 Licencia y atribución
 
 El código y la documentación originales del plugin están bajo la
 [Licencia MIT](../LICENSE). Las reglas de Semantic Versioning 2.0.0 incorporadas
