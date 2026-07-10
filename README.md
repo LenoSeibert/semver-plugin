@@ -21,27 +21,65 @@ Plugin portátil para agentes de código que aplica a especificação oficial
 | GitHub Copilot CLI | plugin, skills e hooks |
 | OpenCode e Cursor | instruções portáteis via `AGENTS.md` |
 
+## Instalação
+
+Enquanto o [repositório](https://github.com/LenoSeibert/semver-plugin) estiver
+privado, autentique o GitHub antes de instalar (`gh auth login` seguido de
+`gh auth setup-git`) e confirme que sua conta tem acesso. Depois que ele se
+tornar público, essa etapa deixa de ser necessária.
+
+### Codex
+
+```sh
+codex plugin marketplace add LenoSeibert/semver-plugin
+codex plugin add semver-plugin@semver-plugin
+```
+
+Abra `/hooks`, revise e autorize os hooks, e inicie uma nova conversa.
+
+### Claude Code
+
+```sh
+claude plugin marketplace add LenoSeibert/semver-plugin
+claude plugin install semver-plugin@semver-plugin
+```
+
+Execute `/reload-plugins` ou abra uma nova sessão.
+
+### Gemini CLI
+
+```sh
+gemini extensions install https://github.com/LenoSeibert/semver-plugin
+```
+
+Reinicie a sessão do Gemini CLI. Para desenvolvimento a partir de um clone
+local, use `gemini extensions link .`.
+
+### GitHub Copilot CLI
+
+```sh
+copilot plugin install LenoSeibert/semver-plugin
+```
+
+### OpenCode e Cursor
+
+Esses harnesses descobrem `AGENTS.md` no projeto. Baixe o repositório e copie
+ou vincule o arquivo sem sobrescrever instruções já existentes:
+
+```sh
+git clone https://github.com/LenoSeibert/semver-plugin.git
+cp semver-plugin/AGENTS.md /caminho/do/projeto/AGENTS.md
+```
+
+Se o projeto já tiver `AGENTS.md`, incorpore a seção de SemVer manualmente.
+
 ## Uso
 
-Instale o diretório como plugin local, aprove os hooks em `/hooks` e tente:
+Depois da instalação, tente:
 
 - “Qual deve ser a próxima versão depois destas mudanças?”
 - “Revise este diff segundo SemVer.”
 - “Ordene estas versões com pre-releases.”
-
-Instalação local por harness:
-
-```sh
-# Gemini CLI
-gemini extensions link .
-
-# GitHub Copilot CLI, depois de publicar o repositório
-copilot plugin install OWNER/REPO
-```
-
-Codex e Claude Code usam seus manifestos nativos. Para OpenCode ou Cursor,
-copie ou vincule `AGENTS.md` no projeto que deve seguir estas regras; ambos
-descobrem esse arquivo nativamente.
 
 O plugin segue SemVer 2.0.0; convenções específicas de npm, Cargo, PEP 440 ou
 outros ecossistemas só se aplicam quando forem explicitamente solicitadas.

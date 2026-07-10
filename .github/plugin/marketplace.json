@@ -1,0 +1,19 @@
+{
+  "name": "semver-plugin",
+  "description": "Semantic Versioning 2.0.0 rules for coding agents.",
+  "owner": {
+    "name": "Leno Seibert",
+    "url": "https://github.com/LenoSeibert"
+  },
+  "plugins": [
+    {
+      "name": "semver-plugin",
+      "description": "Choose and review releases using Semantic Versioning 2.0.0.",
+      "source": "./",
+      "category": "development",
+      "tags": ["semver", "versioning", "releases"],
+      "skills": "skills/",
+      "hooks": "hooks/copilot-hooks.json"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "semver-plugin",
+  "interface": {
+    "displayName": "SemVer Rules"
+  },
+  "plugins": [
+    {
+      "name": "semver-plugin",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/LenoSeibert/semver-plugin.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

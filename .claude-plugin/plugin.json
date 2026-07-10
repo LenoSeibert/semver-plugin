@@ -3,8 +3,11 @@
   "version": "0.2.0",
   "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
   "author": {
-    "name": "Local developer"
+    "name": "Leno Seibert",
+    "url": "https://github.com/LenoSeibert"
   },
+  "homepage": "https://github.com/LenoSeibert/semver-plugin",
+  "repository": "https://github.com/LenoSeibert/semver-plugin",
   "license": "MIT",
   "skills": "./skills/",
   "hooks": "./hooks/hooks.json"
