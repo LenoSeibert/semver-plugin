@@ -17,6 +17,7 @@
 - [सुविधाएँ](#-सुविधाएँ)
 - [समर्थित परिवेश](#-समर्थित-परिवेश)
 - [स्थापना](#-स्थापना)
+- [अपडेट](#-अपडेट)
 - [उपयोग](#-उपयोग)
 - [प्रोजेक्ट ऑटोमेशन](#-प्रोजेक्ट-ऑटोमेशन)
 - [लाइसेंस और श्रेय](#-लाइसेंस-और-श्रेय)
@@ -120,6 +121,58 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 
 > **💡 सुझाव:** यदि परियोजना में पहले से `AGENTS.md` है, तो SemVer भाग को
 > मैन्युअल रूप से शामिल करें।
+
+---
+
+## 🔄 अपडेट
+
+### Codex
+
+```sh
+codex plugin marketplace add LenoSeibert/semver-plugin
+codex plugin add semver-plugin@semver-plugin
+```
+
+स्थापना कमांड फिर से चलाने पर marketplace ताज़ा होता है और नवीनतम संस्करण मिलता है।
+यदि पूछा जाए तो `/hooks` में hooks को फिर से अनुमति दें, फिर नया संवाद शुरू करें।
+
+### Claude Code
+
+```sh
+claude plugin marketplace update semver-plugin
+claude plugin update semver-plugin@semver-plugin
+```
+
+`/reload-plugins` चलाएँ या नया सत्र शुरू करें।
+
+### Gemini CLI
+
+```sh
+gemini extensions update semver-plugin
+```
+
+सभी इंस्टॉल की गई extensions अपडेट करने के लिए `gemini extensions update --all`
+का उपयोग करें। इसके बाद Gemini सत्र पुनः आरंभ करें।
+
+### GitHub Copilot CLI
+
+```sh
+copilot plugin install LenoSeibert/semver-plugin
+```
+
+स्थापना कमांड फिर से चलाने पर नवीनतम संस्करण मिलता है।
+
+### OpenCode और Cursor
+
+नवीनतम repository खींचें और स्थानीय संपादनों को सुरक्षित रखते हुए फ़ाइल को फिर से copy करें:
+
+```sh
+git -C semver-plugin pull
+cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
+```
+
+> **💡 सुझाव:** यदि आपने SemVer भाग को किसी मौजूदा `AGENTS.md` में मिला दिया है, तो
+> ओवरराइट करने के बजाय बदलावों को मैन्युअल रूप से समेकित करें।
 
 ---
 

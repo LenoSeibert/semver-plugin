@@ -17,6 +17,7 @@
 - [Features](#-features)
 - [Supported harnesses](#-supported-harnesses)
 - [Installation](#-installation)
+- [Updating](#-updating)
 - [Usage](#-usage)
 - [Project automation](#-project-automation)
 - [License and attribution](#-license-and-attribution)
@@ -129,6 +130,59 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 
 > **💡 Tip:** If the project already has an `AGENTS.md`, incorporate the SemVer
 > section manually.
+
+---
+
+## 🔄 Updating
+
+### Codex
+
+```sh
+codex plugin marketplace add LenoSeibert/semver-plugin
+codex plugin add semver-plugin@semver-plugin
+```
+
+Re-running the install commands refreshes the marketplace and pulls the latest
+version. Re-authorize the hooks in `/hooks` if prompted, then start a new
+conversation.
+
+### Claude Code
+
+```sh
+claude plugin marketplace update semver-plugin
+claude plugin update semver-plugin@semver-plugin
+```
+
+Run `/reload-plugins` or start a new session.
+
+### Gemini CLI
+
+```sh
+gemini extensions update semver-plugin
+```
+
+Use `gemini extensions update --all` to update every installed extension.
+Restart the Gemini session afterward.
+
+### GitHub Copilot CLI
+
+```sh
+copilot plugin install LenoSeibert/semver-plugin
+```
+
+Re-running the install command fetches the latest version.
+
+### OpenCode and Cursor
+
+Pull the latest repository and re-copy the file, preserving any local edits:
+
+```sh
+git -C semver-plugin pull
+cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
+```
+
+> **💡 Tip:** If you merged the SemVer section into an existing `AGENTS.md`,
+> reconcile the changes manually instead of overwriting.
 
 ---
 

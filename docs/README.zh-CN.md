@@ -17,6 +17,7 @@
 - [功能](#-功能)
 - [支持的环境](#-支持的环境)
 - [安装](#-安装)
+- [更新](#-更新)
 - [使用](#-使用)
 - [项目自动化](#-项目自动化)
 - [许可证和署名](#-许可证和署名)
@@ -113,6 +114,57 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 ```
 
 > **💡 提示：** 如果项目已有 `AGENTS.md`，请手动合并 SemVer 部分。
+
+---
+
+## 🔄 更新
+
+### Codex
+
+```sh
+codex plugin marketplace add LenoSeibert/semver-plugin
+codex plugin add semver-plugin@semver-plugin
+```
+
+重新运行安装命令会刷新 marketplace 并拉取最新版本。如有提示，请在 `/hooks`
+中重新授权 hooks，然后开始新对话。
+
+### Claude Code
+
+```sh
+claude plugin marketplace update semver-plugin
+claude plugin update semver-plugin@semver-plugin
+```
+
+运行 `/reload-plugins`，或开始新会话。
+
+### Gemini CLI
+
+```sh
+gemini extensions update semver-plugin
+```
+
+使用 `gemini extensions update --all` 更新所有已安装的扩展。之后重启 Gemini 会话。
+
+### GitHub Copilot CLI
+
+```sh
+copilot plugin install LenoSeibert/semver-plugin
+```
+
+重新运行安装命令会获取最新版本。
+
+### OpenCode 和 Cursor
+
+拉取最新仓库并重新复制文件，同时保留本地修改：
+
+```sh
+git -C semver-plugin pull
+cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
+```
+
+> **💡 提示：** 如果你已将 SemVer 部分合并到现有的 `AGENTS.md` 中，请手动合并
+> 变更，而不要直接覆盖。
 
 ---
 
