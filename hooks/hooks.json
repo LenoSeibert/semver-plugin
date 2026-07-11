@@ -7,7 +7,7 @@
           {
             "name": "semver-context",
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}/hooks/semver-context.js\" SessionStart",
+            "command": "PLUGIN_DIR=\"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}\"; PLUGIN_DIR=\"${PLUGIN_DIR//\\\\//}\"; node \"${PLUGIN_DIR}/hooks/semver-context.js\" SessionStart",
             "commandWindows": "node \"$env:CLAUDE_PLUGIN_ROOT\\hooks\\semver-context.js\" SessionStart",
             "timeout": 5,
             "statusMessage": "Loading SemVer rules..."
@@ -21,7 +21,7 @@
           {
             "name": "semver-context",
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}/hooks/semver-context.js\" SubagentStart",
+            "command": "PLUGIN_DIR=\"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}\"; PLUGIN_DIR=\"${PLUGIN_DIR//\\\\//}\"; node \"${PLUGIN_DIR}/hooks/semver-context.js\" SubagentStart",
             "commandWindows": "node \"$env:CLAUDE_PLUGIN_ROOT\\hooks\\semver-context.js\" SubagentStart",
             "timeout": 5,
             "statusMessage": "Loading SemVer rules..."
