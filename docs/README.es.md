@@ -18,6 +18,7 @@
 - [Funciones](#-funciones)
 - [Entornos compatibles](#-entornos-compatibles)
 - [Instalación](#-instalación)
+- [Actualización](#-actualización)
 - [Uso](#-uso)
 - [Automatización del proyecto](#-automatización-del-proyecto)
 - [Licencia y atribución](#-licencia-y-atribución)
@@ -123,6 +124,60 @@ cp semver-plugin/AGENTS.md /ruta/al/proyecto/AGENTS.md
 
 > **💡 Consejo:** Si el proyecto ya tiene un `AGENTS.md`, incorpore manualmente
 > la sección SemVer.
+
+---
+
+## 🔄 Actualización
+
+### Codex
+
+```sh
+codex plugin marketplace add LenoSeibert/semver-plugin
+codex plugin add semver-plugin@semver-plugin
+```
+
+Volver a ejecutar los comandos de instalación actualiza el marketplace y obtiene
+la versión más reciente. Vuelva a autorizar los hooks en `/hooks` si se le
+solicita e inicie una conversación nueva.
+
+### Claude Code
+
+```sh
+claude plugin marketplace update semver-plugin
+claude plugin update semver-plugin@semver-plugin
+```
+
+Ejecute `/reload-plugins` o inicie una sesión nueva.
+
+### Gemini CLI
+
+```sh
+gemini extensions update semver-plugin
+```
+
+Use `gemini extensions update --all` para actualizar todas las extensiones
+instaladas. Reinicie la sesión de Gemini después.
+
+### GitHub Copilot CLI
+
+```sh
+copilot plugin install LenoSeibert/semver-plugin
+```
+
+Volver a ejecutar el comando de instalación obtiene la versión más reciente.
+
+### OpenCode y Cursor
+
+Actualice el repositorio y vuelva a copiar el archivo, preservando las ediciones
+locales:
+
+```sh
+git -C semver-plugin pull
+cp semver-plugin/AGENTS.md /ruta/al/proyecto/AGENTS.md
+```
+
+> **💡 Consejo:** Si fusionó la sección SemVer en un `AGENTS.md` existente,
+> reconcilie los cambios manualmente en lugar de sobrescribir.
 
 ---
 
