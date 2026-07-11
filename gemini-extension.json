@@ -1,6 +1,6 @@
 {
   "name": "semver-plugin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
   "contextFileName": "AGENTS.md"
 }
