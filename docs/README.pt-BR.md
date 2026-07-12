@@ -53,7 +53,7 @@ recomendação de release mais fácil de justificar.
 
 | Harness | Integração |
 | --- | --- |
-| **Codex** | manifesto, skills e hooks |
+| **Codex** | manifesto nativo, marketplace, skills e hooks |
 | **Claude Code** | manifesto, skills e hooks |
 | **Gemini CLI** | extensão, contexto, skills e hook de sessão |
 | **GitHub Copilot CLI** | plugin, skills e hooks |
@@ -70,7 +70,7 @@ codex plugin marketplace add LenoSeibert/semver-plugin
 codex plugin add semver-plugin@semver-plugin
 ```
 
-Abra `/hooks`, revise e autorize os hooks e inicie uma nova conversa.
+Abra `/hooks`, revise e autorize os hooks e inicie uma nova tarefa no Codex.
 
 ### Claude Code
 
@@ -136,8 +136,7 @@ codex plugin add semver-plugin@semver-plugin
 ```
 
 Reexecutar os comandos de instalação atualiza o marketplace e busca a versão
-mais recente. Reautorize os hooks em `/hooks` se solicitado e inicie uma nova
-conversa.
+mais recente. Reautorize os hooks em `/hooks` se solicitado e inicie uma nova tarefa.
 
 ### Claude Code
 

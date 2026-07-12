@@ -7,8 +7,8 @@
           {
             "name": "semver-context",
             "type": "command",
-            "command": "DIR=$(printf %s \"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}\" | tr '\\\\' '/'); node \"${DIR}/hooks/semver-context.js\" SessionStart",
-            "commandWindows": "node \"$env:CLAUDE_PLUGIN_ROOT\\hooks\\semver-context.js\" SessionStart",
+            "command": "DIR=$(printf %s \"${CODEX_PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT:-${extensionPath}}}\" | tr '\\\\' '/'); node \"${DIR}/hooks/semver-context.js\" SessionStart",
+            "commandWindows": "$root = if ($env:CODEX_PLUGIN_ROOT) { $env:CODEX_PLUGIN_ROOT } elseif ($env:CLAUDE_PLUGIN_ROOT) { $env:CLAUDE_PLUGIN_ROOT } else { $env:extensionPath }; node \"$root\\hooks\\semver-context.js\" SessionStart",
             "timeout": 5,
             "statusMessage": "Loading SemVer rules..."
           }
@@ -21,8 +21,8 @@
           {
             "name": "semver-context",
             "type": "command",
-            "command": "DIR=$(printf %s \"${CLAUDE_PLUGIN_ROOT:-${extensionPath}}\" | tr '\\\\' '/'); node \"${DIR}/hooks/semver-context.js\" SubagentStart",
-            "commandWindows": "node \"$env:CLAUDE_PLUGIN_ROOT\\hooks\\semver-context.js\" SubagentStart",
+            "command": "DIR=$(printf %s \"${CODEX_PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT:-${extensionPath}}}\" | tr '\\\\' '/'); node \"${DIR}/hooks/semver-context.js\" SubagentStart",
+            "commandWindows": "$root = if ($env:CODEX_PLUGIN_ROOT) { $env:CODEX_PLUGIN_ROOT } elseif ($env:CLAUDE_PLUGIN_ROOT) { $env:CLAUDE_PLUGIN_ROOT } else { $env:extensionPath }; node \"$root\\hooks\\semver-context.js\" SubagentStart",
             "timeout": 5,
             "statusMessage": "Loading SemVer rules..."
           }
