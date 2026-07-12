@@ -131,6 +131,21 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 > **💡 Tip:** If the project already has an `AGENTS.md`, incorporate the SemVer
 > section manually.
 
+### Local source development
+
+Install or refresh the current working tree without pushing it to GitHub:
+
+```sh
+./scripts/install-local.sh all
+# or
+make install-local
+```
+
+Pass `codex`, `claude`, `gemini`, or `copilot` instead of `all` to update one
+harness. Use `--dry-run` to inspect the commands first. The script includes
+tracked, modified, and untracked files; start a new harness session afterward.
+Run `make help` to see the corresponding per-harness and validation targets.
+
 ---
 
 ## 🔄 Updating
