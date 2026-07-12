@@ -6,9 +6,11 @@ PYTHON ?= python3
 PLUGIN_CREATOR_ROOT ?= $(HOME)/.codex/skills/.system/plugin-creator
 SKILL_CREATOR_ROOT ?= $(HOME)/.codex/skills/.system/skill-creator
 LOCAL_INSTALLER := ./scripts/install-local.sh
+LOCAL_UNINSTALLER := ./scripts/uninstall-local.sh
 
 .PHONY: help validate validate-version validate-plugin validate-skills check-diff \
-	install-local install-codex install-claude install-gemini install-copilot dry-run
+	install-local install-codex install-claude install-gemini install-copilot dry-run \
+	remove-local remove-codex remove-claude remove-gemini remove-copilot
 
 help: ## Show the available targets
 	@awk 'BEGIN {FS = ":.*## "; printf "Usage: make <target>\n\nTargets:\n"} \
@@ -46,3 +48,18 @@ install-copilot: ## Install or update the source in GitHub Copilot CLI
 
 dry-run: ## Preview all local installation commands
 	$(LOCAL_INSTALLER) all --dry-run
+
+remove-local: ## Remove the local source installation from every harness
+	$(LOCAL_UNINSTALLER) all
+
+remove-codex: ## Remove the local source installation from Codex
+	$(LOCAL_UNINSTALLER) codex
+
+remove-claude: ## Remove the local source installation from Claude Code
+	$(LOCAL_UNINSTALLER) claude
+
+remove-gemini: ## Remove the linked source from Gemini CLI
+	$(LOCAL_UNINSTALLER) gemini
+
+remove-copilot: ## Remove the local source installation from GitHub Copilot CLI
+	$(LOCAL_UNINSTALLER) copilot

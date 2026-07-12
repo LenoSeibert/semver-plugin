@@ -17,6 +17,7 @@
 - [Features](#-features)
 - [Supported harnesses](#-supported-harnesses)
 - [Installation](#-installation)
+- [Uninstalling](#-uninstalling)
 - [Updating](#-updating)
 - [Usage](#-usage)
 - [Project automation](#-project-automation)
@@ -145,6 +146,37 @@ Pass `codex`, `claude`, `gemini`, or `copilot` instead of `all` to update one
 harness. Use `--dry-run` to inspect the commands first. The script includes
 tracked, modified, and untracked files; start a new harness session afterward.
 Run `make help` to see the corresponding per-harness and validation targets.
+
+---
+
+## 🗑️ Uninstalling
+
+To remove local source installations created by this repository:
+
+```sh
+make remove-local
+```
+
+To remove the plugin and marketplace installed from GitHub:
+
+```sh
+# Codex
+codex plugin remove semver-plugin@semver-plugin
+codex plugin marketplace remove semver-plugin
+
+# Claude Code
+claude plugin uninstall semver-plugin@semver-plugin --scope user
+claude plugin marketplace remove semver-plugin --scope user
+
+# Gemini CLI
+gemini extensions uninstall semver-plugin
+
+# GitHub Copilot CLI
+copilot plugin uninstall semver-plugin
+```
+
+For OpenCode or Cursor, remove the SemVer section previously copied into the
+project's `AGENTS.md`; do not delete unrelated project instructions.
 
 ---
 
