@@ -17,6 +17,7 @@
 - [सुविधाएँ](#-सुविधाएँ)
 - [समर्थित परिवेश](#-समर्थित-परिवेश)
 - [स्थापना](#-स्थापना)
+- [अनइंस्टॉल](#-अनइंस्टॉल)
 - [अपडेट](#-अपडेट)
 - [उपयोग](#-उपयोग)
 - [प्रोजेक्ट ऑटोमेशन](#-प्रोजेक्ट-ऑटोमेशन)
@@ -121,6 +122,30 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 
 > **💡 सुझाव:** यदि परियोजना में पहले से `AGENTS.md` है, तो SemVer भाग को
 > मैन्युअल रूप से शामिल करें।
+
+---
+
+## 🗑️ अनइंस्टॉल
+
+GitHub से install किए गए plugin और marketplace को हटाने के लिए:
+
+```sh
+# Codex
+codex plugin remove semver-plugin@semver-plugin
+codex plugin marketplace remove semver-plugin
+
+# Claude Code
+claude plugin uninstall semver-plugin@semver-plugin --scope user
+claude plugin marketplace remove semver-plugin --scope user
+
+# Gemini CLI
+gemini extensions uninstall semver-plugin
+
+# GitHub Copilot CLI
+copilot plugin uninstall semver-plugin
+```
+
+OpenCode या Cursor में केवल `AGENTS.md` में कॉपी किया गया SemVer भाग हटाएँ।
 
 ---
 

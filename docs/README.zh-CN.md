@@ -17,6 +17,7 @@
 - [功能](#-功能)
 - [支持的环境](#-支持的环境)
 - [安装](#-安装)
+- [卸载](#-卸载)
 - [更新](#-更新)
 - [使用](#-使用)
 - [项目自动化](#-项目自动化)
@@ -114,6 +115,30 @@ cp semver-plugin/AGENTS.md /path/to/project/AGENTS.md
 ```
 
 > **💡 提示：** 如果项目已有 `AGENTS.md`，请手动合并 SemVer 部分。
+
+---
+
+## 🗑️ 卸载
+
+要删除从 GitHub 安装的插件和 marketplace，请运行：
+
+```sh
+# Codex
+codex plugin remove semver-plugin@semver-plugin
+codex plugin marketplace remove semver-plugin
+
+# Claude Code
+claude plugin uninstall semver-plugin@semver-plugin --scope user
+claude plugin marketplace remove semver-plugin --scope user
+
+# Gemini CLI
+gemini extensions uninstall semver-plugin
+
+# GitHub Copilot CLI
+copilot plugin uninstall semver-plugin
+```
+
+对于 OpenCode 或 Cursor，请只删除复制到 `AGENTS.md` 中的 SemVer 部分。
 
 ---
 

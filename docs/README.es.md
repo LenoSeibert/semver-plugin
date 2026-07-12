@@ -18,6 +18,7 @@
 - [Funciones](#-funciones)
 - [Entornos compatibles](#-entornos-compatibles)
 - [Instalación](#-instalación)
+- [Desinstalación](#-desinstalación)
 - [Actualización](#-actualización)
 - [Uso](#-uso)
 - [Automatización del proyecto](#-automatización-del-proyecto)
@@ -124,6 +125,30 @@ cp semver-plugin/AGENTS.md /ruta/al/proyecto/AGENTS.md
 
 > **💡 Consejo:** Si el proyecto ya tiene un `AGENTS.md`, incorpore manualmente
 > la sección SemVer.
+
+---
+
+## 🗑️ Desinstalación
+
+Para eliminar el plugin y el marketplace instalados desde GitHub:
+
+```sh
+# Codex
+codex plugin remove semver-plugin@semver-plugin
+codex plugin marketplace remove semver-plugin
+
+# Claude Code
+claude plugin uninstall semver-plugin@semver-plugin --scope user
+claude plugin marketplace remove semver-plugin --scope user
+
+# Gemini CLI
+gemini extensions uninstall semver-plugin
+
+# GitHub Copilot CLI
+copilot plugin uninstall semver-plugin
+```
+
+En OpenCode o Cursor, elimine únicamente la sección SemVer copiada en `AGENTS.md`.
 
 ---
 
