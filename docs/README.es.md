@@ -54,7 +54,7 @@ reales y facilita justificar la recomendación de publicación.
 
 | Entorno | Integración |
 | --- | --- |
-| **Codex** | manifiesto, skills y hooks |
+| **Codex** | manifiesto nativo, marketplace, skills y hooks |
 | **Claude Code** | manifiesto, skills y hooks |
 | **Gemini CLI** | extensión, contexto, skills y hook de sesión |
 | **GitHub Copilot CLI** | plugin, skills y hooks |
@@ -71,7 +71,7 @@ codex plugin marketplace add LenoSeibert/semver-plugin
 codex plugin add semver-plugin@semver-plugin
 ```
 
-Abra `/hooks`, revise y autorice los hooks y luego inicie una conversación nueva.
+Abra `/hooks`, revise y autorice los hooks y luego inicie una nueva tarea en Codex.
 
 ### Claude Code
 
@@ -137,8 +137,7 @@ codex plugin add semver-plugin@semver-plugin
 ```
 
 Volver a ejecutar los comandos de instalación actualiza el marketplace y obtiene
-la versión más reciente. Vuelva a autorizar los hooks en `/hooks` si se le
-solicita e inicie una conversación nueva.
+la versión más reciente. Vuelva a autorizar los hooks en `/hooks` si se le solicita e inicie una nueva tarea.
 
 ### Claude Code
 

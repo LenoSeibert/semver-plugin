@@ -52,7 +52,7 @@ recommendation को समझाना आसान बनाता है।
 
 | परिवेश | एकीकरण |
 | --- | --- |
-| **Codex** | manifest, skills और hooks |
+| **Codex** | native manifest, marketplace, skills और hooks |
 | **Claude Code** | manifest, skills और hooks |
 | **Gemini CLI** | extension, context, skills और session hook |
 | **GitHub Copilot CLI** | plugin, skills और hooks |
@@ -69,7 +69,7 @@ codex plugin marketplace add LenoSeibert/semver-plugin
 codex plugin add semver-plugin@semver-plugin
 ```
 
-`/hooks` खोलें, hooks की समीक्षा करके उन्हें अनुमति दें, फिर नया संवाद शुरू करें।
+`/hooks` खोलें, hooks की समीक्षा करके उन्हें अनुमति दें, फिर नया Codex task शुरू करें।
 
 ### Claude Code
 
@@ -134,7 +134,7 @@ codex plugin add semver-plugin@semver-plugin
 ```
 
 स्थापना कमांड फिर से चलाने पर marketplace ताज़ा होता है और नवीनतम संस्करण मिलता है।
-यदि पूछा जाए तो `/hooks` में hooks को फिर से अनुमति दें, फिर नया संवाद शुरू करें।
+यदि पूछा जाए तो `/hooks` में hooks को फिर से अनुमति दें, फिर नया task शुरू करें।
 
 ### Claude Code
 

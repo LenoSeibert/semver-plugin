@@ -11,6 +11,9 @@ const manifestPaths = [
   ".claude-plugin/plugin.json",
   "gemini-extension.json",
 ];
+const codexManifestPath = ".codex-plugin/plugin.json";
+const codexMarketplacePath = ".agents/plugins/marketplace.json";
+const hooksPath = "hooks/hooks.json";
 
 const semverPattern =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
@@ -38,6 +41,65 @@ for (const manifestPath of manifestPaths) {
     errors.push(
       `${manifestPath} has version "${manifest.version}", expected "${version}".`,
     );
+  }
+}
+
+const codexManifest = readJson(codexManifestPath);
+const codexMarketplace = readJson(codexMarketplacePath);
+const hooksConfig = readJson(hooksPath);
+const codexEntry = codexMarketplace.plugins?.find(
+  (plugin) => plugin.name === codexManifest.name,
+);
+
+if (codexManifest.name !== "semver-plugin") {
+  errors.push(`${codexManifestPath} must use the plugin name "semver-plugin".`);
+}
+
+if (codexManifest.skills !== "./skills/") {
+  errors.push(`${codexManifestPath} must expose skills from "./skills/".`);
+}
+
+if (Object.hasOwn(codexManifest, "hooks")) {
+  errors.push(`${codexManifestPath} must not declare unsupported Codex hooks.`);
+}
+
+for (const eventName of ["SessionStart", "SubagentStart"]) {
+  const commands = (hooksConfig.hooks?.[eventName] ?? []).flatMap(
+    (entry) => entry.hooks ?? [],
+  );
+
+  if (commands.length === 0) {
+    errors.push(`${hooksPath} must declare a ${eventName} hook.`);
+  }
+
+  for (const hook of commands) {
+    if (!hook.command?.includes("CODEX_PLUGIN_ROOT")) {
+      errors.push(`${hooksPath} ${eventName} must support CODEX_PLUGIN_ROOT.`);
+    }
+
+    if (!hook.commandWindows?.includes("CODEX_PLUGIN_ROOT")) {
+      errors.push(
+        `${hooksPath} ${eventName} Windows command must support CODEX_PLUGIN_ROOT.`,
+      );
+    }
+  }
+}
+
+if (!codexEntry) {
+  errors.push(
+    `${codexMarketplacePath} must contain an entry for "${codexManifest.name}".`,
+  );
+} else {
+  if (!codexEntry.source?.source || !codexEntry.source.url) {
+    errors.push(`${codexMarketplacePath} must declare the plugin Git source.`);
+  }
+
+  if (!codexEntry.policy?.installation || !codexEntry.policy?.authentication) {
+    errors.push(`${codexMarketplacePath} must declare the installation policy.`);
+  }
+
+  if (!codexEntry.category) {
+    errors.push(`${codexMarketplacePath} must declare the plugin category.`);
   }
 }
 
