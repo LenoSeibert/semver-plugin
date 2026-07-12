@@ -49,7 +49,7 @@
 
 | 环境 | 集成方式 |
 | --- | --- |
-| **Codex** | 清单、skills 和 hooks |
+| **Codex** | 原生清单、marketplace、skills 和 hooks |
 | **Claude Code** | 清单、skills 和 hooks |
 | **Gemini CLI** | 扩展、上下文、skills 和会话 hook |
 | **GitHub Copilot CLI** | 插件、skills 和 hooks |
@@ -66,7 +66,7 @@ codex plugin marketplace add LenoSeibert/semver-plugin
 codex plugin add semver-plugin@semver-plugin
 ```
 
-打开 `/hooks`，审核并授权 hooks，然后开始新对话。
+打开 `/hooks`，审核并授权 hooks，然后新建一个 Codex 任务。
 
 ### Claude Code
 
@@ -127,7 +127,7 @@ codex plugin add semver-plugin@semver-plugin
 ```
 
 重新运行安装命令会刷新 marketplace 并拉取最新版本。如有提示，请在 `/hooks`
-中重新授权 hooks，然后开始新对话。
+中重新授权 hooks，然后新建一个任务。
 
 ### Claude Code
 

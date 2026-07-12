@@ -61,7 +61,7 @@ world's most widely spoken first languages:
 
 | Harness | Integration |
 | --- | --- |
-| **Codex** | manifest, skills, and hooks |
+| **Codex** | native manifest, marketplace, skills, and hooks |
 | **Claude Code** | manifest, skills, and hooks |
 | **Gemini CLI** | extension, context, skills, and session hook |
 | **GitHub Copilot CLI** | plugin, skills, and hooks |
@@ -78,7 +78,7 @@ codex plugin marketplace add LenoSeibert/semver-plugin
 codex plugin add semver-plugin@semver-plugin
 ```
 
-Open `/hooks`, review and authorize the hooks, then start a new conversation.
+Open `/hooks`, review and authorize the hooks, then start a new Codex task.
 
 ### Claude Code
 
@@ -143,8 +143,7 @@ codex plugin add semver-plugin@semver-plugin
 ```
 
 Re-running the install commands refreshes the marketplace and pulls the latest
-version. Re-authorize the hooks in `/hooks` if prompted, then start a new
-conversation.
+version. Re-authorize the hooks in `/hooks` if prompted, then start a new task.
 
 ### Claude Code
 

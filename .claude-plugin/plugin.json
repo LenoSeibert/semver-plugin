@@ -1,6 +1,6 @@
 {
   "name": "semver-plugin",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
   "author": {
     "name": "Leno Seibert",

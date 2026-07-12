@@ -1,6 +1,6 @@
 {
   "name": "semver-plugin",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Apply Semantic Versioning 2.0.0 rules to release decisions and reviews.",
   "author": {
     "name": "Leno Seibert",
@@ -19,6 +19,8 @@
     "category": "Developer Tools",
     "capabilities": ["Instructions", "Lifecycle hooks"],
     "websiteURL": "https://github.com/LenoSeibert/semver-plugin",
+    "composerIcon": "./assets/semver-plugin-logo.png",
+    "logo": "./assets/semver-plugin-logo.png",
     "defaultPrompt": [
       "Choose the next version for these changes.",
       "Review this diff for SemVer compliance.",
