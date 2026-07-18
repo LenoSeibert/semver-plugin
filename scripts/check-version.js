@@ -59,8 +59,12 @@ if (codexManifest.skills !== "./skills/") {
   errors.push(`${codexManifestPath} must expose skills from "./skills/".`);
 }
 
+// Codex auto-detects hooks/hooks.json at the plugin root, so the manifest
+// must not repeat the hooks path (declaring it would be redundant).
 if (Object.hasOwn(codexManifest, "hooks")) {
-  errors.push(`${codexManifestPath} must not declare unsupported Codex hooks.`);
+  errors.push(
+    `${codexManifestPath} must not declare a hooks path; Codex auto-detects hooks/hooks.json.`,
+  );
 }
 
 for (const eventName of ["SessionStart", "SubagentStart"]) {
